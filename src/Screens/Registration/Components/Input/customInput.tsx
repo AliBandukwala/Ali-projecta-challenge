@@ -1,4 +1,7 @@
-import { ChangeEvent, memo, useState } from "react";
+import { ChangeEvent, memo } from "react";
+import { useRegistrationDataContext } from "../../Context/registrationContext";
+import PasswordCheck from "../PasswordCheck/passwordCheck";
+import SubmitButton from "../SubmitButton/submitButton";
 
 interface CustomInputProps {
     type: 'email' | 'password'
@@ -6,23 +9,36 @@ interface CustomInputProps {
 
 const CustomInput = memo(({type}: CustomInputProps) => {
 
-    const [inputText, SetInputText] = useState("")
+    // data coming in from the Context
+    const { registrationData, setRegistrationData } = useRegistrationDataContext(); 
 
+    // method to update state on input change
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-        SetInputText(e.target.value)     
+        const { id, value } = e.target
+        setRegistrationData(
+            {
+                ...registrationData,
+                [id]: value,
+            }
+        )
     }
 
     return (
         <div style={{display: 'flex', flexDirection:'column'}}>
             <input 
+                id={type} 
                 type={type} 
-                value={inputText} 
+                placeholder={type}
+                value={registrationData[type]} 
                 onChange={handleInputChange} 
-                placeholder={type} 
             />
 
             {
-                type === "password" && <div></div>
+                type === "password" && 
+                <div style={{display: 'flex', flexDirection: 'column'}}>
+                    <PasswordCheck />
+                    <SubmitButton />
+                </div>
             }
 
         </div>
