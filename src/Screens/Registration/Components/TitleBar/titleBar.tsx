@@ -2,7 +2,7 @@ import './titleBar.css'
 
 const TitleBar = () => {
     return (
-        <header>
+        <header className='registrationTitleBar' >
             <span>Registration</span>
         </header>
     )
