@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
+import { Checks } from "../../../../Models/checksModel";
 import { useRegistrationDataContext } from "../../Context/registrationContext";
-
-interface Checks {
-    smallLetterCheck: boolean,
-    capsLetterCheck: boolean,
-    numberCheck: boolean,
-    specialCharCheck: boolean,
-    pwdLengthCheck: boolean,
-}
+import './passwordCheck.css'
 
 const PasswordCheck = () => {
 
@@ -40,27 +34,30 @@ const PasswordCheck = () => {
             pwdLengthCheck,
         } as Checks)
     }, [password])
+
+    const checkMark: string = '✔️'
+    const crossMark: string = '❌'
     
     return (
         <>
-            <p>
-                <span>{checks.pwdLengthCheck ? '✔️' : '❌'}</span>
+            <p className="pwdCheck">
+                <span className="mark">{checks.pwdLengthCheck ? checkMark : crossMark }</span>
                 <span>8+ characters</span>
             </p> 
-            <p>
-                <span>{checks.smallLetterCheck ? '✔️' : '❌'}</span>
+            <p className="pwdCheck">
+                <span className="mark">{checks.smallLetterCheck ? checkMark : crossMark }</span>
                 <span>lowercase letter</span>
             </p> 
-            <p>
-                <span>{checks.capsLetterCheck ? '✔️' : '❌'}</span>
+            <p className="pwdCheck">
+                <span className="mark">{checks.capsLetterCheck ? checkMark : crossMark }</span>
                 <span>uppercase letter</span>
             </p> 
-            <p>
-                <span>{checks.numberCheck ? '✔️' : '❌'}</span>
+            <p className="pwdCheck">
+                <span className="mark">{checks.numberCheck ? checkMark : crossMark }</span>
                 <span>number</span>
             </p> 
-            <p>
-                <span>{checks.specialCharCheck ? '✔️' : '❌'}</span>
+            <p className="pwdCheck">
+                <span className="mark">{checks.specialCharCheck ? checkMark : crossMark }</span>
                 <span>special character</span>
             </p> 
         </>

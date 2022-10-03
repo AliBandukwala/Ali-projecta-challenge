@@ -7,7 +7,11 @@ const SubmitButton = () => {
 
     // TODO: Fix this logic here
     return (
-        <button disabled={!email.includes('@') && email.length === 0 && password.length > 8} >Submit</button>
+        <button 
+            disabled={!email.includes('@') && email.length === 0 && password.length > 8}
+        >
+            Submit
+        </button>
     )
 }
 

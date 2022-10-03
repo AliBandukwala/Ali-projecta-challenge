@@ -1,0 +1,13 @@
+.customInput {
+    display: flex;
+    flex-direction: column;    
+    margin: 16px;
+}
+
+.customInput input {
+    height: 30px;
+    border: 2px solid black;
+    font-size: 18px;
+    color: black;
+    padding: 16px;
+}

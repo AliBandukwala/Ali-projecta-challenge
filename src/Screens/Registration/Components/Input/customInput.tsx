@@ -2,6 +2,7 @@ import { ChangeEvent, memo } from "react";
 import { useRegistrationDataContext } from "../../Context/registrationContext";
 import PasswordCheck from "../PasswordCheck/passwordCheck";
 import SubmitButton from "../SubmitButton/submitButton";
+import './customInput.css'
 
 interface CustomInputProps {
     type: 'email' | 'password'
@@ -24,7 +25,7 @@ const CustomInput = memo(({type}: CustomInputProps) => {
     }
 
     return (
-        <div style={{display: 'flex', flexDirection:'column'}}>
+        <div className="customInput">
             <input 
                 id={type} 
                 type={type} 
@@ -35,10 +36,10 @@ const CustomInput = memo(({type}: CustomInputProps) => {
 
             {
                 type === "password" && 
-                <div style={{display: 'flex', flexDirection: 'column'}}>
+                <>
                     <PasswordCheck />
                     <SubmitButton />
-                </div>
+                </>
             }
 
         </div>

@@ -1,7 +1,7 @@
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, ReactNode, useContext, useMemo, useState } from "react";
 import { RegistrationData } from "../../../Models/registrationDataModel";
 
-interface RegistrationProviderProps {children: React.ReactNode}
+interface RegistrationProviderProps {children: ReactNode}
 interface RegistrationProvideValue {registrationData: RegistrationData, setRegistrationData: Function, }
 
 const initialState = {
@@ -19,7 +19,7 @@ const RegistartionDataProvider = ({ children }: RegistrationProviderProps) => {
   
     const value: RegistrationProvideValue = useMemo( 
       () => ({ registrationData: registartionData, setRegistrationData: setRegistartionData, }) as RegistrationProvideValue, 
-      [registartionData, setRegistartionData,]
+      [registartionData, setRegistartionData]
     )
   
     return (
@@ -33,9 +33,9 @@ const RegistartionDataProvider = ({ children }: RegistrationProviderProps) => {
 
   /* main hook to manage New Sensor Data state in components */
 export function useRegistrationDataContext() {
-    const context = useContext(RegistrationDataContext)
-    if (context === undefined) {
+    const contextData = useContext(RegistrationDataContext)
+    if (contextData === undefined) {
         throw new Error('useRegistrationDataContext must be used within a RegistartionDataProvider')
     }
-    return context
+    return contextData
 }
