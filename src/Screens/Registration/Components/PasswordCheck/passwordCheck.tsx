@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Checks } from "../../../../Models/checksModel";
 import { useRegistrationDataContext } from "../../Context/registrationContext";
 import './passwordCheck.css'
@@ -6,18 +6,8 @@ import './passwordCheck.css'
 const PasswordCheck = () => {
 
     // data coming in from the Context (onlz password required here)
-    const { registrationData } = useRegistrationDataContext(); 
+    const { registrationData, checks, setChecks } = useRegistrationDataContext(); 
     const { password } = registrationData
-
-    const [checks, setChecks] = useState<Checks>(
-        {
-            smallLetterCheck: false,
-            capsLetterCheck: false,
-            numberCheck: false,
-            specialCharCheck: false,
-            pwdLengthCheck: false,
-        } as Checks
-    )
 
     useEffect(() => {
         const smallLetterCheck: boolean = /[a-z]/.test(password)
@@ -33,7 +23,7 @@ const PasswordCheck = () => {
             specialCharCheck,
             pwdLengthCheck,
         } as Checks)
-    }, [password])
+    }, [password, setChecks])
 
     const checkMark: string = '✔️'
     const crossMark: string = '❌'

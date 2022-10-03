@@ -1,12 +1,26 @@
 import { createContext, ReactNode, useContext, useMemo, useState } from "react";
+import { Checks } from "../../../Models/checksModel";
 import { RegistrationData } from "../../../Models/registrationDataModel";
 
 interface RegistrationProviderProps {children: ReactNode}
-interface RegistrationProvideValue {registrationData: RegistrationData, setRegistrationData: Function, }
+interface RegistrationProvideValue {
+  registrationData: RegistrationData, 
+  setRegistrationData: Function, 
+  checks: Checks,
+  setChecks: Function,
+}
 
-const initialState = {
+export const initialState = {
     registrationData: {email: '', password: ''} as RegistrationData,
     setRegistrationData: () => {},
+    checks: {
+      smallLetterCheck: false,
+      capsLetterCheck: false,
+      numberCheck: false,
+      specialCharCheck: false,
+      pwdLengthCheck: false,
+    } as Checks,
+    setChecks: () => {},
 } as RegistrationProvideValue
 
 /* Context for Registration data: */
@@ -16,10 +30,18 @@ export const RegistrationDataContext = createContext<RegistrationProvideValue>(i
 const RegistartionDataProvider = ({ children }: RegistrationProviderProps) => {
 
     const [registartionData, setRegistartionData] = useState<RegistrationData>(initialState.registrationData);
+    const [checks, setChecks] = useState<Checks>(initialState.checks)
   
     const value: RegistrationProvideValue = useMemo( 
-      () => ({ registrationData: registartionData, setRegistrationData: setRegistartionData, }) as RegistrationProvideValue, 
-      [registartionData, setRegistartionData]
+      () => (
+        { 
+          registrationData: registartionData, 
+          setRegistrationData: setRegistartionData, 
+          checks: checks,
+          setChecks: setChecks,
+        }
+      ) as RegistrationProvideValue, 
+      [registartionData, setRegistartionData, checks, setChecks]
     )
   
     return (

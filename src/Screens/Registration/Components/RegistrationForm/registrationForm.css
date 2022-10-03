@@ -1,13 +1,14 @@
 .registrationForm {
+    position: relative;
     padding: 16px 0px;
     border: 2px solid black;
     display: flex;
-    margin: 50px 0px;
+    margin: auto auto;
 }
 
-@media only screen and (max-width: 448px) {
+@media only screen and (max-width: 600px) {
     .registrationForm {
         flex-direction: column;
-        margin: 16px 0px;
+        margin: 16px;
     }
 }
