@@ -9,6 +9,7 @@ const PasswordCheck = () => {
     const { registrationData, checks, setChecks } = useRegistrationDataContext(); 
     const { password } = registrationData
 
+    // updating state when password changes 
     useEffect(() => {
         const smallLetterCheck: boolean = /[a-z]/.test(password)
         const capsLetterCheck: boolean = /[A-Z]/.test(password)

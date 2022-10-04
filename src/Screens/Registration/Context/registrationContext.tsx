@@ -2,7 +2,10 @@ import { createContext, ReactNode, useContext, useMemo, useState } from "react";
 import { Checks } from "../../../Models/checksModel";
 import { RegistrationData } from "../../../Models/registrationDataModel";
 
-interface RegistrationProviderProps {children: ReactNode}
+interface RegistrationProviderProps {
+  children: ReactNode
+}
+
 interface RegistrationProvideValue {
   registrationData: RegistrationData, 
   setRegistrationData: Function, 
@@ -10,6 +13,7 @@ interface RegistrationProvideValue {
   setChecks: Function,
 }
 
+/* Initial state for context */
 export const initialState = {
     registrationData: {email: '', password: ''} as RegistrationData,
     setRegistrationData: () => {},
@@ -53,7 +57,7 @@ const RegistartionDataProvider = ({ children }: RegistrationProviderProps) => {
   
   export default RegistartionDataProvider
 
-  /* main hook to manage New Sensor Data state in components */
+  /* main hook to manage Registration data state in components */
 export function useRegistrationDataContext() {
     const contextData = useContext(RegistrationDataContext)
     if (contextData === undefined) {
