@@ -6,6 +6,7 @@ const SubmitButton = () => {
     const { registrationData, setRegistrationData, checks, setChecks } = useRegistrationDataContext();
     const { email } = registrationData 
 
+    // boolean to enable or disable button based on checks criteria
     let disbaled = !(
                         (email.length > 0) && 
                         (checks.capsLetterCheck) &&
@@ -14,7 +15,8 @@ const SubmitButton = () => {
                         (checks.specialCharCheck) &&
                         (checks.pwdLengthCheck)
                     )
-
+    
+    // Resetting to initial state when submit button is clicked
     const handleSubmit = () => {
         setRegistrationData(initialState.registrationData)
         setChecks(initialState.checks)

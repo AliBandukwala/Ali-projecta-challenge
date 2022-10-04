@@ -38,6 +38,10 @@ const CustomInput = memo(({type}: CustomInputProps) => {
             />
 
             {
+                /* 
+                    rendering PasswordCheck and Submit button 
+                    along with Password Input (following the desing)
+                */
                 type === "password" && 
                 <>
                     <PasswordCheck />
