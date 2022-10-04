@@ -29,7 +29,7 @@ const PasswordCheck = () => {
     const crossMark: string = '❌'
     
     return (
-        <>
+        <div data-testid='passwordCheck'>
             <p className="pwdCheck">
                 <span className="mark">{checks.pwdLengthCheck ? checkMark : crossMark }</span>
                 <span>8+ characters</span>
@@ -50,7 +50,7 @@ const PasswordCheck = () => {
                 <span className="mark">{checks.specialCharCheck ? checkMark : crossMark }</span>
                 <span>special character</span>
             </p> 
-        </>
+        </div>
     )
 }
 

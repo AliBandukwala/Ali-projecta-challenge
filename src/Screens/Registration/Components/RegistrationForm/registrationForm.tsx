@@ -5,7 +5,11 @@ import './registrationForm.css'
 const Registration = () => {
     return (
         <RegistartionDataProvider>
-            <form className="registrationForm">
+            <form 
+                className="registrationForm" 
+                onSubmitCapture={(e) => {e.preventDefault()}} 
+                aria-label="Registration Form"
+            >
                 <CustomInput type="email" />
                 <CustomInput type="password" />
             </form>

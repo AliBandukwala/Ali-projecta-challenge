@@ -21,7 +21,12 @@ const SubmitButton = () => {
     }
     
     return (
-        <button className="submitButton" disabled={disbaled} onClick={handleSubmit} >
+        <button 
+            className="submitButton" 
+            disabled={disbaled}
+            onClick={handleSubmit} 
+            aria-label="Submit Button"
+        >
             Submit
         </button>
     )
