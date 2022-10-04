@@ -26,10 +26,13 @@ const CustomInput = memo(({type}: CustomInputProps) => {
 
     return (
         <div className="customInput">
+            <label htmlFor={type}>{type.charAt(0).toUpperCase() + type.slice(1)}</label>
             <input 
                 id={type} 
                 type={type} 
+                name={type}
                 placeholder={type}
+                aria-label={type}
                 value={registrationData[type]} 
                 onChange={handleInputChange} 
             />

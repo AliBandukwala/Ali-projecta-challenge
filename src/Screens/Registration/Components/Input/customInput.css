@@ -11,3 +11,9 @@
     color: black;
     padding: 16px;
 }
+
+.customInput label {
+    font-size: 18px;
+    color: black;
+    margin-bottom: 16px;
+}
